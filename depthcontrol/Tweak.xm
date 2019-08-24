@@ -250,18 +250,3 @@ static void preferencesChanged() {
 	}
 }
 %end
-
-@interface CAMApertureButton : UIView
-@end
-
-%hook CAMApertureButton
--(void) layoutSubviews {
-  %orig;
-  NSArray *subs = [self.subviews[0] subviews];
-  for (UIView *subview in subs) {
-    UILabel *label = (UILabel *)subview;
-    NSString *labelText = (NSString *)@"ƒ";
-    label.text = labelText;
-  }
-}
-%end
